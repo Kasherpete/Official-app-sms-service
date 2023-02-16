@@ -18,7 +18,7 @@ def weather_key():
     open_weathermap_key = ""
     return open_weathermap_key
 
-# here you can enter any password you want
+
 def admin_password():
     password = ""
     return password
