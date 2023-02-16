@@ -1,5 +1,5 @@
 import time
-from main import Main_Command_Handler
+import Main
 import pytextnow as pytn
 import Credentials
 import asyncio
@@ -17,7 +17,7 @@ async def ask(question, msg, timeout, default):
     msg.send_sms(question)
     while time.perf_counter() - timer_timeout <= timeout:
         await asyncio.sleep(1)
-        new_messages = Main_Command_Handler.client.get_unread_messages()
+        new_messages = Main.client.get_unread_messages()
         for message in new_messages:
             if message.number == msg.number:
                 message.mark_as_read()
