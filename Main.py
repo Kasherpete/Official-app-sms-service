@@ -1,7 +1,7 @@
 import pytextnow as pytn
 import Credentials
 import asyncio
-from commands import Command_Details, Command_Secret, Command_Status, Command_Weather, Command_Help, Command_Admin, Command_ChatGPT
+from commands import Command_Details, Command_Secret, Command_Status, Command_Weather, Command_Help, Command_Admin, Command_GPT
 
 # client initialization
 
@@ -36,11 +36,9 @@ def handler(msg):
             elif str.lower(message_content) == "!admin":
                 print("command activated: admin")
                 asyncio.run(Command_Admin.admin_command(msg))
-
-                # left off working here
-            elif str.lower(message_content) == "!chatgpt":
-                print("command activated: chatgpt")
-                asyncio.run(Command_ChatGPT.chatgpt_command(msg))
+            elif str.lower(message_content) == "!gpt" or str.lower(message_content) == "!chatgpt":
+                print("command activated: gpt")
+                asyncio.run(Command_GPT.gpt_command(msg))
             else:
                 print(f'Unkown command "{message_content}". (interpreted as "{str.lower(message_content)}").')
                 msg.send_sms(error_message)

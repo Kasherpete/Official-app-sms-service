@@ -10,5 +10,6 @@ client = pytn.Client(username, sid_cookie=sid, csrf_cookie=csrf)
 
 
 async def help_command(msg):
-    msg.send_sms("The current commands are: !weather, !help, !details, !status.")
+    msg.send_sms("The current commands are: !weather, !help, !details, !status, and !GPT.")
+    #add in functionality for !help [command]. Kasher if you implement this tell me 
 
