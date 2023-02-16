@@ -25,7 +25,7 @@ async def weather_command(msg):
 
     # get the city and state from user
 
-    resp = await sms.ask("Input city name:", msg, 60, "chicago")
+    resp = await sms.ask("Input city name:", msg, 60, "Chicago")
     if resp != "" and resp is not None:
         city_name = resp
     resp = await sms.ask("Input two letter state abbreviation:", msg, 60, "IL")

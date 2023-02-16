@@ -40,7 +40,7 @@ def handler(msg):
                 print("command activated: gpt")
                 asyncio.run(Command_GPT.gpt_command(msg))
             else:
-                print(f'Unkown command "{message_content}". (interpreted as "{str.lower(message_content)}").')
+                print(f'Unknown command "{message_content}". (interpreted as "{str.lower(message_content)}").')
                 msg.send_sms(error_message)
         
 

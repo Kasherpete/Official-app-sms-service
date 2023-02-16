@@ -26,7 +26,7 @@ async def ask(question, msg, timeout, default):
     # timeout error messages
     await asyncio.sleep(1)
     if default != "":
-        msg.send_sms(f"took too long to respond! {default}")
+        msg.send_sms(f'ERROR:TIMEOUT. User took too long to respond. Default response: "{default}".')
     else:
-        msg.send_sms("took too long to respond! please use command again to re-try")
+        msg.send_sms("ERROR:TIMEOUT. User took too long to respond. Please use command again to retry.")
     return default
