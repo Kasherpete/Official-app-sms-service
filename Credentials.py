@@ -22,3 +22,8 @@ def weather_key():
 def admin_password():
     password = ""
     return password
+
+
+def openai_key():
+    key = ""
+    return key

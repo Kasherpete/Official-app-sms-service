@@ -1,8 +1,7 @@
 import pytextnow as pytn
-
 import Credentials
 import asyncio
-from commands import Command_Details, Command_Secret, Command_Status, Command_Weather, Command_Help, Command_Admin
+from commands import Command_Details, Command_Secret, Command_Status, Command_Weather, Command_Help, Command_Admin, Command_ChatGPT
 
 # client initialization
 
@@ -22,21 +21,26 @@ def handler(msg):
             if str.lower(message_content) == "!weather":
                 print("command activated: weather")
                 asyncio.run(Command_Weather.weather_command(msg))
-            elif message_content == "!help" or message_content == "!Help":
+            elif str.lower(message_content) == "!help":
                 print("command activated: help")
                 asyncio.run(Command_Help.help_command(msg))
-            elif message_content == "!details" or message_content == "!Details":
+            elif str.lower(message_content) == "!details":
                 print("command activated: details")
                 asyncio.run(Command_Details.details_command(msg))
-            elif message_content == "!status" or message_content == "!Status":
+            elif str.lower(message_content) == "!status":
                 print("command activated: status")
                 asyncio.run(Command_Status.status_command(msg))
-            elif message_content == "!secret" or message_content == "!Secret":
+            elif str.lower(message_content) == "!secret":
                 print("command activated: secret")
                 asyncio.run(Command_Secret.secret_command(msg))
-            elif message_content == "!admin" or message_content == "!Admin":
+            elif str.lower(message_content) == "!admin":
                 print("command activated: admin")
                 asyncio.run(Command_Admin.admin_command(msg))
+
+                # left off working here
+            elif str.lower(message_content) == "!chatgpt":
+                print("command activated: chatgpt")
+                asyncio.run(Command_ChatGPT.chatgpt_command(msg))
             else:
                 print(f'Unkown command "{message_content}". (interpreted as "{str.lower(message_content)}").')
                 msg.send_sms(error_message)
