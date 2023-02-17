@@ -1,4 +1,6 @@
 import pytextnow as pytn
+import requests.exceptions
+
 import Credentials
 import asyncio
 from commands import Command_Details, Command_Secret, Command_Status, Command_Weather, Command_Help, Command_Admin, Command_GPT
@@ -9,6 +11,9 @@ username = Credentials.username()
 sid = Credentials.sid()
 csrf = Credentials.csrf()
 client = pytn.Client(username, sid_cookie=sid, csrf_cookie=csrf)
+command_count = 0
+
+
 error_message = "ERROR:UNKNOWN_COMMAND. Please check spelling."
 print("Running Program.")
 
@@ -50,7 +55,7 @@ def handler(msg):
             # if command is invalid
 
             else:
-                print(f'Unknown command "{message_content}". (interpreted as "{str.lower(message_content)}").')
+                print(f'Unknown command "{message_content}".')
                 msg.send_sms(error_message)
         
 
