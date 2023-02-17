@@ -32,8 +32,10 @@ async def gpt_command(msg):
         # break up the response into separate texts for longer responses
 
         sms_limit = 150
-        list_response = [completion.choices[0].text.replace("\n", '      ')[i:i + sms_limit] for i in
-                         range(0, len(completion.choices[0].text.replace("\n", '      ')), sms_limit)]
+        gpt_response = completion.choices[0].text.replace("\n", '      ')
+        gpt_response = gpt_response.replace('"', "*")
+        list_response = [gpt_response[i:i + sms_limit] for i in
+                         range(0, len(gpt_response), sms_limit)]
 
         # send the messages to user
 
@@ -46,6 +48,6 @@ async def gpt_command(msg):
 
     else:
         prompt_length = len(prompt)
-        msg.send("ERROR: request too long. (" + str(prompt_length) + "/80 characters). Please use !gpt again to re-try")
+        msg.send_sms("ERROR: request too long. (" + str(prompt_length) + "/80 characters). Please use !gpt again to re-try")
 
 

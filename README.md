@@ -21,3 +21,7 @@ if PyTextNow does not work or an incorrect version installs, use
  # Admin Command
  You will find a command file named Command_Admin.py. This file is for use at your disposal for any of your needs,
  although we may add some functionality to this command that gets uploaded to github.
+ # Known Limitations
+ There are a few "bugs" that are present, mainly due to PyTextNow version 1.1.9 that make it not possible to send 
+ certain characters. This includes quotation marks and the reverse backslash (so you cannot use \n). The program deals 
+ with this by inserting multiple spaces instead of \n, and * instead of ".
