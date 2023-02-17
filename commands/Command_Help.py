@@ -18,19 +18,19 @@ async def help_command(msg, message_content):
 
     # if message is "!help <command>"
 
-    elif str.lower(message_content) == "!help weather":
+    elif str.lower(message_content) == "!help weather" or str.lower(message_content) == "!help !weather":
         msg.send_sms("The !weather command will get the weather for you area.")
-    elif str.lower(message_content) == "!help help":
+    elif str.lower(message_content) == "!help help" or str.lower(message_content) == "!help !help":
         msg.send_sms("The help command will give you instructions on how to use the commands.")
-    elif str.lower(message_content) == "!help details":
+    elif str.lower(message_content) == "!help details" or str.lower(message_content) == "!help !details":
         msg.send_sms("The !details command will give you details on this service.")
-    elif str.lower(message_content) == "!help status":
+    elif str.lower(message_content) == "!help status" or str.lower(message_content) == "!help !status":
         msg.send_sms("The !status command will give you information on the different server's statuses.")
-    elif str.lower(message_content) == "!help secret":
+    elif str.lower(message_content) == "!help secret" or str.lower(message_content) == "!help !secret":
         msg.send_sms("")
-    elif str.lower(message_content) == "!help admin":
+    elif str.lower(message_content) == "!help admin" or str.lower(message_content) == "!help !admin":
         msg.send_sms("The !admin command grants administrator privileges to user.")
-    elif str.lower(message_content) == "!help gpt" or str.lower(message_content) == "!help chatgpt":
+    elif str.lower(message_content) == "!help gpt" or str.lower(message_content) == "!help chatgpt" or str.lower(message_content) == "!help !gpt" or str.lower(message_content) == "!help !chatgpt":
         msg.send_sms("The !gpt or !chatgpt command gives access to the GPT-3 network. Please use this command sparingly to keep costs down.")
 
     # if command is invalid
