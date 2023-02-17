@@ -3,6 +3,8 @@ import Credentials
 import Custom_Message_protocols as sms
 import asyncio
 
+# client initialization
+
 openai.api_key = Credentials.openai_key()
 model_engine = "text-davinci-003"
 max_tokens = 150

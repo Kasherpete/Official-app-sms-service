@@ -26,6 +26,7 @@ async def status_command(msg):
         status_list += "weather_server: NO_RESPONSE "
     if True:
         status_list += "sms_server: ONLINE "
+
     # send off status
 
     msg.send_sms(status_list)

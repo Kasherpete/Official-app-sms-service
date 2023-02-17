@@ -57,17 +57,23 @@ async def weather_command(msg):
 
         msg.send_sms("Weather in " + str(f"{city_name}, {state_code}:"))
         await asyncio.sleep(1)
+
         msg.send_sms(str(weather_description))
         await asyncio.sleep(1)
+
         msg.send_sms("Temperature: " + str(current_temperature) + "\u00B0\u0046")
         await asyncio.sleep(1)
+
         msg.send_sms("Air Pressure: " + str(current_pressure) + "hpa")
         await asyncio.sleep(1)
+
         msg.send_sms("Humidity: " + str(current_humidity) + "%")
 
     else:
         error1 = "ERROR:WEATHER_NO_RESPONSE. Please check that you entered the correct city, or say !status to check the weather server's status."
+
         # wait command here. certain phones have a spam filter that
         # blocks texts if they are sent in quick succession.
+
         await asyncio.sleep(1)
         msg.send_sms(error1)
