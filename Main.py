@@ -21,9 +21,9 @@ def handler(msg):
             if str.lower(message_content) == "!weather":
                 print("command activated: weather")
                 asyncio.run(Command_Weather.weather_command(msg))
-            elif str.lower(message_content) == "!help":
+            elif str.lower(message_content)[:5] == "!help":
                 print("command activated: help")
-                asyncio.run(Command_Help.help_command(msg))
+                asyncio.run(Command_Help.help_command(msg, message_content))
             elif str.lower(message_content) == "!details":
                 print("command activated: details")
                 asyncio.run(Command_Details.details_command(msg))
