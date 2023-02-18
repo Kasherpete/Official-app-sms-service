@@ -1,5 +1,4 @@
 import pytextnow as pytn
-import requests.exceptions
 
 import Credentials
 import asyncio
@@ -11,11 +10,22 @@ username = Credentials.username()
 sid = Credentials.sid()
 csrf = Credentials.csrf()
 client = pytn.Client(username, sid_cookie=sid, csrf_cookie=csrf)
-command_count = 0
 
-
+gpt_requests = 0
+weather_requests = 0
 error_message = "ERROR:UNKNOWN_COMMAND. Please check spelling."
 print("Running Program.")
+
+# if a command was sent when service was
+# offline, notify that user
+
+new_messages = client.get_unread_messages()
+for message in new_messages:
+    message.mark_as_read()
+    message.send_sms("Service is now back online. You may now send your command.")
+    print("Notified user of service now online")
+
+# checks for new messages, then activate the command
 
 
 @client.on("message")
@@ -23,6 +33,8 @@ def handler(msg):
     if msg.type == pytn.MESSAGE_TYPE:
         message_content = msg.content
         if str(message_content[0]) == "!":
+            Command_Admin.command_count += 1
+            Command_Admin.valid_command_count += 1
 
             if str.lower(message_content) == "!weather":
                 print("command activated: weather")
@@ -56,6 +68,5 @@ def handler(msg):
 
             else:
                 print(f'Unknown command "{message_content}".')
+                Command_Admin.valid_command_count -= 1
                 msg.send_sms(error_message)
-        
-

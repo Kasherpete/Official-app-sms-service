@@ -2,6 +2,7 @@ import openai
 import Credentials
 import Custom_Message_protocols as sms
 import asyncio
+import Main
 
 # client initialization
 
@@ -21,6 +22,7 @@ async def gpt_command(msg):
         # Generate a response
 
         msg.send_sms("GPT-3 is generating a response, Please Wait...")
+        Main.gpt_requests += 1
         completion = openai.Completion.create(
             engine=model_engine,
             prompt=prompt,

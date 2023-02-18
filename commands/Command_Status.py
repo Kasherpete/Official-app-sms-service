@@ -2,6 +2,8 @@ import pytextnow as pytn
 import Credentials
 import requests
 
+import Main
+
 # client initialization
 
 username = Credentials.username()
@@ -15,6 +17,7 @@ async def status_command(msg):
 
     # get server responses
 
+    Main.weather_requests += 1
     weather_response = requests.get("http://api.openweathermap.org/data/2.5/weather?" + "appid=" + Credentials.weather_key() + "&q=" + "chicago" + "," + "IL" + "," + "US")
 
     # parse server responses

@@ -3,9 +3,14 @@ import Credentials
 import Custom_Message_protocols as sms
 import asyncio
 import openai
+import Main
+
+# some counters
+
+command_count = 0
+valid_command_count = 0
 
 # client initialization
-
 
 username = Credentials.username()
 sid = Credentials.sid()
@@ -16,11 +21,12 @@ client = pytn.Client(username, sid_cookie=sid, csrf_cookie=csrf)
 async def admin_command(msg):
     password = await sms.ask("ENTER PASSWORD", msg, 60, "")
 
-    if password == Credentials.admin_password():
+    if password == "ADMIN1234":
 
         # add anything that you want only accessible to administrators.
 
-        user_response = await sms.ask("Correct password. This command is currently in development. Respond with 1 to access GPT-3 with admin permissions.", msg, 60, "")
+        print(f'user "{msg.number} has gained access to the admin command.')
+        user_response = await sms.ask("Correct password. This command is currently in development. Respond with 1 to access GPT-3 with admin permissions, and 2 for counters.", msg, 60, "")
 
         # if response = 1, do GPT-3 command (admin)
 
@@ -36,6 +42,7 @@ async def admin_command(msg):
             # Generate a response
 
             msg.send_sms("GPT-3 is generating a response, Please Wait...")
+            Main.gpt_requests += 1
             completion = openai.Completion.create(
                 engine=model_engine,
                 prompt=user_response,
@@ -61,11 +68,12 @@ async def admin_command(msg):
                 await asyncio.sleep(1)
                 print(message)
 
-        elif user_response == 2:
-            print()
+        elif user_response == "2":
+            msg.send_sms(f"Valid commands sent: {str(valid_command_count)}. Total commands sent: {str(command_count)}. Weather requests made: {str(Main.weather_requests)}. GPT-3 requests made: {str(Main.gpt_requests)}. Note: these are measured from the start of the program.")
 
     # if user gets password wrong, lock
 
     else:
+        print(f'user "{msg.number} tried to access admin and failed. user locked for one minute')
         msg.send_sms("Incorrect password. User locked for one minute.")
         await asyncio.sleep(60)

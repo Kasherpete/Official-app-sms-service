@@ -4,6 +4,7 @@ import requests
 import Credentials
 import Custom_Message_protocols as sms
 import asyncio
+import Main
 
 # client initialization
 
@@ -35,6 +36,7 @@ async def weather_command(msg):
     # get the weather data
 
     complete_url = base_url + "appid=" + api_key + "&q=" + city_name + "," + state_code + "," + country_code
+    Main.weather_requests += 1
     response = requests.get(complete_url)
 
     # parse the data
