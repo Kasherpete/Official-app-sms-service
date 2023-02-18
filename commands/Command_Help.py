@@ -36,6 +36,10 @@ async def help_command(msg, message_content):
     elif str.lower(message_content) == "!help gpt" or str.lower(message_content) == "!help chatgpt" or str.lower(message_content) == "!help !gpt" or str.lower(message_content) == "!help !chatgpt":
         msg.send_sms("The !gpt or !chatgpt command gives access to the GPT-3 network. Please use this command sparingly to keep costs down.")
 
+    elif str.lower(message_content) == "!help gpt" or str.lower(message_content) == "!help chatgpt" or str.lower(message_content) == "!help !gpt" or str.lower(message_content) == "!help !chatgpt":
+        msg.send_sms("The !qr or !qrcode generates a qr code for any website you want. Qr code scanning will be available soon.")
+        # TODO: when I add qr code scanning too, update this
+
     # if command is invalid
 
     else:

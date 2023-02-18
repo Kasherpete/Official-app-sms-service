@@ -2,7 +2,7 @@ import pytextnow as pytn
 
 import Credentials
 import asyncio
-from commands import Command_Details, Command_Secret, Command_Status, Command_Weather, Command_Help, Command_Admin, Command_GPT
+from commands import Command_Details, Command_Secret, Command_Status, Command_Weather, Command_Help, Command_Admin, Command_GPT, Command_QR
 
 # client initialization
 
@@ -63,6 +63,10 @@ def handler(msg):
             elif str.lower(message_content) == "!gpt" or str.lower(message_content) == "!chatgpt":
                 print("command activated: gpt")
                 asyncio.run(Command_GPT.gpt_command(msg))
+
+            elif str.lower(message_content) == "!qr" or str.lower(message_content) == "!qrcode":
+                print("command activated: qr code")
+                asyncio.run(Command_QR.qr_command(msg))
 
             # if command is invalid
 

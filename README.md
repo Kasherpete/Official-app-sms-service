@@ -26,6 +26,9 @@ if PyTextNow does not work or an incorrect version installs, use
  certain characters. This includes quotation marks and the reverse backslash (so you cannot use \n). The program deals 
  with this by inserting multiple spaces instead of \n, and * instead of ".
  # Versions and Updates
- 1.4.0  -  updated admin command, added some counters available to administrators, added a function that when a user 
+ 1.4.1 - Added qr code generator. Plans in place to add qr code reader
+
+ 1.4.0  -  Updated admin command, added some counters available to administrators, added a function that when a user 
  tries to send command when service is offline, the program sends a notification to the user on start that signals its
   now online status.
+
