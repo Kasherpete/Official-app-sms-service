@@ -14,7 +14,7 @@ async def help_command(msg, message_content):
     # if message is just "!help"
 
     if str.lower(message_content) == "!help":
-        msg.send_sms("The current commands are: !weather, !help, !details, !status, and !GPT. Say !help <command> to get help on that specific command.")
+        msg.send_sms("The current commands are: !weather, !help, !details, !status, !GPT, !qr, and !translate. Say !help <command> to get help on that specific command.")
 
     # if message is "!help <command>"
 
@@ -39,6 +39,9 @@ async def help_command(msg, message_content):
     elif str.lower(message_content) == "!help gpt" or str.lower(message_content) == "!help chatgpt" or str.lower(message_content) == "!help !gpt" or str.lower(message_content) == "!help !chatgpt":
         msg.send_sms("The !qr or !qrcode generates a qr code for any website you want. Qr code scanning will be available soon.")
         # TODO: when I add qr code scanning too, update this
+
+    elif str.lower(message_content) == "!help translate" or str.lower(message_content) == "!help !translate":
+        msg.send_sms("The !translate command will translate any text into any language. It is ran off of a 3rd party google translate API to keep costs to a zero.")
 
     # if command is invalid
 

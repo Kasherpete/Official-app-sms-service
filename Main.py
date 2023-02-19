@@ -2,7 +2,7 @@ import pytextnow as pytn
 
 import Credentials
 import asyncio
-from commands import Command_Details, Command_Secret, Command_Status, Command_Weather, Command_Help, Command_Admin, Command_GPT, Command_QR
+from commands import Command_Details, Command_Secret, Command_Status, Command_Weather, Command_Help, Command_Admin, Command_GPT, Command_QR, Command_Translate
 
 # client initialization
 
@@ -13,6 +13,7 @@ client = pytn.Client(username, sid_cookie=sid, csrf_cookie=csrf)
 
 gpt_requests = 0
 weather_requests = 0
+translate_requests = 0
 error_message = "ERROR:UNKNOWN_COMMAND. Please check spelling."
 print("Running Program.")
 
@@ -67,6 +68,10 @@ def handler(msg):
             elif str.lower(message_content) == "!qr" or str.lower(message_content) == "!qrcode":
                 print("command activated: qr code")
                 asyncio.run(Command_QR.qr_command(msg))
+
+            elif str.lower(message_content) == "!translate":
+                print("command activated: translate")
+                asyncio.run(Command_Translate.translate_command(msg))
 
             # if command is invalid
 
