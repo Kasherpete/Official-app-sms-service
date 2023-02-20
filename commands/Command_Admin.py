@@ -4,6 +4,7 @@ import Custom_Message_protocols as sms
 import asyncio
 import openai
 import Main
+import pytextnow
 
 # some counters
 
@@ -64,9 +65,14 @@ async def admin_command(msg):
             # send the messages to user
 
             for message in list_response:
-                msg.send_sms(f'GPT-3: {message}')
                 await asyncio.sleep(1)
-                print(message)
+                try:
+                    msg.send_sms(f'GPT-3: {message}')
+                except pytextnow.error.FailedRequest:
+                    print(
+                        "ERROR:INVALID_CHAR. Sorry, there was an error sending a message. This is a known bug and is currently being worked on.")
+                    msg.send_sms(
+                        "ERROR:INVALID_CHAR. Sorry, there was an error sending a message. This is a known bug and is currently being worked on.")
 
         elif user_response == "2":
             msg.send_sms(f"Valid commands sent: {str(valid_command_count)}. Total commands sent: {str(command_count)}. Weather requests made: {str(Main.weather_requests)}. GPT-3 requests made: {str(Main.gpt_requests)}. Translate requests made: {str(Main.translate_requests)}. Note: these are measured from the start of the program.")

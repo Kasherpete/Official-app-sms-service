@@ -46,7 +46,7 @@ async def help_command(msg, message_content):
     # if command is invalid
 
     else:
-        print(f'Unknown command "{message_content}".')
+        print('ERROR:INVALID_COMMAND. Please enter a valid command to get help on.')
         msg.send_sms("ERROR:INVALID_COMMAND. Please enter a valid command to get help on.")
 
 

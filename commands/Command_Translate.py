@@ -2,7 +2,7 @@ from googletrans import Translator
 import googletrans.constants
 import Custom_Message_protocols as sms
 import asyncio
-
+import pytextnow
 import Main
 
 
@@ -23,16 +23,36 @@ async def translate_command(msg):
             await asyncio.sleep(3)
             msg.send_sms(message)
     else:
+
+        # asks the user for languages and prompt
+
         translator = Translator()
         lang1 = str.lower(user_response)
         user_response = await sms.ask("Input the two letter language abbreviation you want your text in.", msg, 60, "es")
         lang2 = str.lower(user_response)
         user_response = await sms.ask("Input your text now.", msg, 60, "Hello.")
         text = user_response
-        try:
-            Main.translate_requests += 1
-            new_text = translator.translate(text, dest=lang2, src=lang1)
-            print(new_text.text)
-            msg.send_sms(new_text.text)
-        except ValueError:
-            msg.send_sms("ERROR:TRANSLATE_ERROR. This error may be caused by inputting an invalid value. Please run the command again to retry.")
+
+        # google translate req
+
+        Main.translate_requests += 1
+        new_text = translator.translate(text, dest=lang2, src=lang1)
+        new_text = new_text.text
+
+        # send msgs
+
+        sms_limit = 150
+        new_text = new_text.choices[0].text.replace("\n", '      ')
+        new_text = new_text.replace('"', "*")
+        list_response = [new_text[i:i + sms_limit] for i in
+                         range(0, len(new_text), sms_limit)]
+
+        for message in list_response:
+            await asyncio.sleep(1)
+            print(message)
+            try:
+                msg.send_sms(message)
+            except pytextnow.error.FailedRequest:
+                print("ERROR:INVALID_CHAR. Sorry, there was an error sending a message. This is a known bug and is currently being worked on.")
+                msg.send_sms(
+                    "ERROR:INVALID_CHAR. Sorry, there was an error sending a message. This is a known bug and is currently being worked on.")
