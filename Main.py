@@ -83,3 +83,5 @@ def handler(msg):
                 print(f'Unknown command "{message_content}".')
                 Command_Admin.valid_command_count -= 1
                 msg.send_sms(error_message)
+
+                # TODO: update readme on new release
