@@ -50,9 +50,4 @@ async def translate_command(msg):
         for message in list_response:
             await asyncio.sleep(1)
             print(message)
-            try:
-                msg.send_sms(message)
-            except pytextnow.error.FailedRequest:
-                print("ERROR:INVALID_CHAR. Sorry, there was an error sending a message. This is a known bug and is currently being worked on.")
-                msg.send_sms(
-                    "ERROR:INVALID_CHAR. Sorry, there was an error sending a message. This is a known bug and is currently being worked on.")
+            sms.send_sms(message, msg)

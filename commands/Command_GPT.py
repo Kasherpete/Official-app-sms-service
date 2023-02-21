@@ -36,21 +36,8 @@ async def gpt_command(msg):
 
         # break up the response into separate texts for longer responses
 
-        sms_limit = 150
-        gpt_response = completion.choices[0].text.replace("\n", '      ')
-        gpt_response = gpt_response.replace('"', '*')
-        list_response = [gpt_response[i:i + sms_limit] for i in
-                         range(0, len(gpt_response), sms_limit)]
+        sms.send_sms(f'GPT-3: {completion.choices[0].text}', msg)
 
-        # send the messages to user
-
-        for message in list_response:
-            await asyncio.sleep(1)
-            try:
-                msg.send_sms(f'GPT-3: {message}')
-            except pytextnow.error.FailedRequest:
-                print("ERROR:INVALID_CHAR. Sorry, there was an error sending a message. This is a known bug and is currently being worked on.")
-                msg.send_sms("ERROR:INVALID_CHAR. Sorry, there was an error sending a message. This is a known bug and is currently being worked on.")
     # does this if prompt entered is over 80 chars
 
     else:

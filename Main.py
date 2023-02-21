@@ -2,7 +2,7 @@ import pytextnow as pytn
 
 import Credentials
 import asyncio
-from commands import Command_Details, Command_Secret, Command_Status, Command_Weather, Command_Help, Command_Admin, Command_GPT, Command_QR, Command_Translate
+from commands import Command_Details, Command_Secret, Command_Status, Command_Weather, Command_Help, Command_Admin, Command_GPT, Command_QR, Command_Translate, Command_Dictionary
 
 # client initialization
 
@@ -72,6 +72,10 @@ def handler(msg):
             elif str.lower(message_content) == "!translate":
                 print("command activated: translate")
                 asyncio.run(Command_Translate.translate_command(msg))
+
+            elif str.lower(message_content) == "!dictionary":
+                print("command activated: dictionary")
+                asyncio.run(Command_Dictionary.dictionary(msg))
 
             # if command is invalid
 

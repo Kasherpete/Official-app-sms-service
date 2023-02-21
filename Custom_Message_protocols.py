@@ -3,6 +3,8 @@ import Main
 import pytextnow as pytn
 import Credentials
 import asyncio
+import pytextnow
+import time
 
 # client initialization
 
@@ -36,3 +38,24 @@ async def ask(question, msg, timeout, default):
     else:
         msg.send_sms("ERROR:TIMEOUT. User took too long to respond. Please use command again to retry.")
     return default
+
+
+def send_sms(content, msg):
+    sms_limit = 150
+
+    content = content.replace("\n", '      ')
+    content = content.replace('"', '*')
+    list_response = [content[i:i + sms_limit] for i in
+                     range(0, len(content), sms_limit)]
+
+
+    for message in list_response:
+        time.sleep(1)
+
+        try:
+            msg.send_sms(message)
+        except pytextnow.error.FailedRequest:
+            print(
+                "ERROR:INVALID_CHAR. Sorry, there was an error sending a message. This is a known bug and is currently being worked on.")
+            msg.send_sms(
+                "ERROR:INVALID_CHAR. Sorry, there was an error sending a message. This is a known bug and is currently being worked on.")
