@@ -26,13 +26,15 @@ if PyTextNow does not work or an incorrect version installs, use
  certain characters. This includes quotation marks and the reverse backslash (so you cannot use \n). The program deals 
  with this by inserting multiple spaces instead of \n, and * instead of ".
  # Versions and Updates
+ 1.4.38 - Added qr code reader in addition to the already existing qr code generator.
+
  1.4.32 - Added bulletin command to inform users of progress on the service.
 
  1.4.31 - Added dictionary command. This is still a beta, so more features will be added in the near future.
 
- 1.4.2 - Added translate command
+ 1.4.2 - Added translate command.
 
- 1.4.1 - Added qr code generator. Plans in place to add qr code reader
+ 1.4.1 - Added qr code generator. Plans in place to add qr code reader.
 
  1.4.0  -  Updated admin command, added some counters available to administrators, added a function that when a user 
  tries to send command when service is offline, the program sends a notification to the user on start that signals its
