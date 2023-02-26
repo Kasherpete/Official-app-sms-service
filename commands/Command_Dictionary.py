@@ -20,12 +20,14 @@ def dict_basic(msg, user_response):
     completion = ""
     r = json.loads(r.text)
     try:
+        # parse
         r = r[0]
         r = r["meanings"]
         for meaning in r:  # how many meanings
             new = meaning["definitions"][0]
             completion += f'{meaning["partOfSpeech"]}: '
             completion += f'{meaning["definitions"][0]["definition"]} '
+        # send message
         sms.send_sms(completion, msg)
     except KeyError:
         msg.send_sms("ERROR:INVALID_REQUEST. This error will be caused because of an incorrectly spelled word.")
@@ -36,12 +38,14 @@ def dict_synonym(msg, user_response):
     completion = "synonyms: "
     r = json.loads(r.text)
     try:
+        # parse
         r = r[0]
         r = r["meanings"]
         for meaning in r:  # how many meanings
             new = meaning["synonyms"]
             for definition in new:
                 completion += f"{definition}, "
+        # send message
         sms.send_sms(completion, msg)
     except KeyError:
         msg.send_sms("ERROR:INVALID_REQUEST. This error will be caused because of an incorrectly spelled word.")
@@ -54,12 +58,14 @@ def dict_advanced(msg, user_response):
     completion += "Definitions: "
     r = json.loads(r.text)
     try:
+        # parse
         r = r[0]
         r = r["meanings"]
         for meaning in r:  # how many meanings
             new = meaning["definitions"]
             for definition in new:
                 completion += f'{definition["definition"]}, '
+        # send message
         sms.send_sms(completion, msg)
     except KeyError:
         msg.send_sms("ERROR:INVALID_REQUEST. This error will be caused because of an incorrectly spelled word.")

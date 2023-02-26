@@ -14,7 +14,7 @@ async def help_command(msg, message_content):
     # if message is just "!help"
 
     if str.lower(message_content) == "!help":
-        msg.send_sms("The current commands are: !weather, !help, !details, !bulletin, !status, !GPT, !qr, !translate, and !dictionary. Say !help <command> to get help on that specific command.")
+        msg.send_sms("The current commands are: !weather, !help, !details, !bulletin, !status, !GPT, !qr, !translate, and !dictionary. Say !help <command> to get help on that specific command, like !help weather or !help status.")
 
     # if message is "!help <command>"
 
@@ -43,7 +43,7 @@ async def help_command(msg, message_content):
         msg.send_sms("The !translate command will translate any text into any language. It is ran off of a 3rd party google translate API to keep costs to a zero.")
 
     elif str.lower(message_content) == "!help dictionary" or str.lower(message_content) == "!help !dictionary":
-        msg.send_sms("The !dictionary command will give you a definition on a certain word. This command is currently in development, and new features will be added soon.")
+        msg.send_sms("The !dictionary command will give you a definition(s) on a certain word. You can also now use it as a thesaurus as of version 1.4.4.")
 
     elif str.lower(message_content) == "!help bulletin" or str.lower(message_content) == "!help !bulletin" or str.lower(message_content) == "!help news" or str.lower(message_content) == "!help !news":
         msg.send_sms("The !bulletin command will inform you on any development currently being made on this service. You can also say !news.")
