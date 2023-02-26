@@ -26,6 +26,8 @@ if PyTextNow does not work or an incorrect version installs, use
  certain characters. This includes quotation marks and the reverse backslash (so you cannot use \n). The program deals 
  with this by inserting multiple spaces instead of \n, and * instead of ".
  # Versions and Updates
+ 1.4.43 - Minor updates to admin, bulletin, gpt, translate commands and added error correction.
+
  1.4.4 - Updated dictionary command
 
  1.4.38 - Added qr code reader in addition to the already existing qr code generator.

@@ -79,7 +79,7 @@ def handler(msg):
 
             elif str.lower(message_content) == "!bulletin" or str.lower(message_content) == "!news":
                 print("command activated: bulletin")
-                asyncio.run(Command_bulletin.bulletin_command(msg))
+                Command_bulletin.bulletin_command(msg)
 
             # if command is invalid
 
