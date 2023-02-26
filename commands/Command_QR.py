@@ -13,7 +13,7 @@ client = pytn.Client(username, sid_cookie=sid, csrf_cookie=csrf)
 
 
 async def qr_command(msg):
-    user_response = await sms.ask("Would you like to create or read a qr code? Respond with 1 to create, and 2 to read.", msg, 60, "1")
+    user_response = await sms.ask("Would you like to create or read a qr code? Respond with 1 to create, and 2 to read. (Note: This will not work if you do not have an MMS subscrption.)", msg, 60, "1")
     if user_response == "1":
         await qr_generate_command(msg)
     elif user_response == "2":

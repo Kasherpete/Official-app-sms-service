@@ -46,7 +46,7 @@ async def help_command(msg, message_content):
         msg.send_sms("The !dictionary command will give you a definition on a certain word. This command is currently in development, and new features will be added soon.")
 
     elif str.lower(message_content) == "!help bulletin" or str.lower(message_content) == "!help !bulletin" or str.lower(message_content) == "!help news" or str.lower(message_content) == "!help !news":
-        msg.send_sms("The !bulletin command will inform you on any development currently being made on this service.")
+        msg.send_sms("The !bulletin command will inform you on any development currently being made on this service. You can also say !news.")
 
     # if command is invalid
 

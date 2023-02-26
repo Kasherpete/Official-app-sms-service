@@ -40,7 +40,7 @@ async def ask(question, msg, timeout, default):
 
 
 def send_sms(content, msg):
-    sms_limit = 150
+    sms_limit = 450
 
     content = content.replace("\n", '      ')
     content = content.replace('"', '*')
@@ -49,7 +49,7 @@ def send_sms(content, msg):
 
 
     for message in list_response:
-        time.sleep(1)
+        time.sleep(3)
 
         try:
             msg.send_sms(message)

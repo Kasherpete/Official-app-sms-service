@@ -35,8 +35,14 @@ async def gpt_command(msg):
         )
 
         # break up the response into separate texts for longer responses
-
-        sms.send_sms(f'GPT-3: {completion.choices[0].text}', msg)
+        print(completion)
+        print(completion.choices)
+        print(completion.choices[0])
+        print(completion.choices[0].text)
+        if completion.usage["completion_tokens"] >= 140:
+            sms.send_sms(f"GPT-3: {completion.choices[0].text} (GPT-3's response may be cut off due to usage limits to keep our costs down.)", msg)
+        else:
+            sms.send_sms(f'GPT-3: {completion.choices[0].text}', msg)
 
     # does this if prompt entered is over 80 chars
 

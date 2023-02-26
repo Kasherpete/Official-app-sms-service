@@ -75,7 +75,7 @@ def handler(msg):
 
             elif str.lower(message_content) == "!dictionary":
                 print("command activated: dictionary")
-                asyncio.run(Command_Dictionary.dictionary(msg))
+                asyncio.run(Command_Dictionary.dict_command(msg))
 
             elif str.lower(message_content) == "!bulletin" or str.lower(message_content) == "!news":
                 print("command activated: bulletin")
