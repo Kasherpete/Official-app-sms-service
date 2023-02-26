@@ -4,7 +4,6 @@ import Custom_Message_protocols as sms
 import asyncio
 import openai
 import Main
-import pytextnow
 
 # some counters
 
@@ -22,11 +21,11 @@ client = pytn.Client(username, sid_cookie=sid, csrf_cookie=csrf)
 async def admin_command(msg):
     password = await sms.ask("ENTER PASSWORD", msg, 60, "")
 
-    if password == "ADMIN1234":
+    if password == "Eth0s2023!":
 
         # add anything that you want only accessible to administrators.
 
-        print(f'user "{msg.number} has gained access to the admin command.')
+        print(f'user "{msg.number}" has gained access to the admin command.')
         user_response = await sms.ask("Correct password. This command is currently in development. Respond with 1 to access GPT-3 with admin permissions, and 2 for counters.", msg, 60, "")
 
         # if response = 1, do GPT-3 command (admin)
@@ -56,23 +55,12 @@ async def admin_command(msg):
 
             # break up the response into separate texts for longer responses
 
-            sms_limit = 150
-            gpt_response = completion.choices[0].text.replace("\n", '      ')
-            gpt_response = gpt_response.replace('"', "*")
-            list_response = [gpt_response[i:i + sms_limit] for i in
-                             range(0, len(gpt_response), sms_limit)]
-
-            # send the messages to user
-
-            for message in list_response:
-                await asyncio.sleep(1)
-                try:
-                    msg.send_sms(f'GPT-3: {message}')
-                except pytextnow.error.FailedRequest:
-                    print(
-                        "ERROR:INVALID_CHAR. Sorry, there was an error sending a message. This is a known bug and is currently being worked on.")
-                    msg.send_sms(
-                        "ERROR:INVALID_CHAR. Sorry, there was an error sending a message. This is a known bug and is currently being worked on.")
+            if completion.usage["completion_tokens"] >= 1000:
+                sms.send_sms(
+                    f"GPT-3: {completion.choices[0].text} (GPT-3's response may be cut off due to usage limits to keep our costs down.)",
+                    msg)
+            else:
+                sms.send_sms(f'GPT-3: {completion.choices[0].text}', msg)
 
         elif user_response == "2":
             msg.send_sms(f"Valid commands sent: {str(valid_command_count)}. Total commands sent: {str(command_count)}. Weather requests made: {str(Main.weather_requests)}. GPT-3 requests made: {str(Main.gpt_requests)}. Translate requests made: {str(Main.translate_requests)}. Note: these are measured from the start of the program.")

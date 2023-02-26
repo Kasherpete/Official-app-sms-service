@@ -1,24 +1,22 @@
 import openai
 import Credentials
 import Custom_Message_protocols as sms
-import asyncio
 import Main
-import pytextnow
 
 # client initialization
 
 openai.api_key = Credentials.openai_key()
 model_engine = "text-davinci-003"
-max_tokens = 150
+max_tokens = 450
 
 
 async def gpt_command(msg):
-    user_response = await sms.ask("Input your prompt now (Character limit: 80)", msg, 60, "")
+    user_response = await sms.ask("Input your prompt now (Character limit: 200)", msg, 60, "")
     prompt = user_response
 
     # checks to make sure user's input is <= 80 chars
 
-    if len(prompt) <= 80:
+    if len(prompt) <= 200:
 
         # Generate a response
 
@@ -35,11 +33,7 @@ async def gpt_command(msg):
         )
 
         # break up the response into separate texts for longer responses
-        print(completion)
-        print(completion.choices)
-        print(completion.choices[0])
-        print(completion.choices[0].text)
-        if completion.usage["completion_tokens"] >= 140:
+        if completion.usage["completion_tokens"] >= 420:
             sms.send_sms(f"GPT-3: {completion.choices[0].text} (GPT-3's response may be cut off due to usage limits to keep our costs down.)", msg)
         else:
             sms.send_sms(f'GPT-3: {completion.choices[0].text}', msg)
@@ -48,7 +42,7 @@ async def gpt_command(msg):
 
     else:
         prompt_length = len(prompt)
-        print("ERROR: request too long. (" + str(prompt_length) + "/80 characters). Please use !gpt again to re-try")
-        msg.send_sms("ERROR: request too long. (" + str(prompt_length) + "/80 characters). Please use !gpt again to re-try")
+        print("ERROR: request too long. (" + str(prompt_length) + "/200 characters). Please use !gpt again to re-try")
+        msg.send_sms("ERROR: request too long. (" + str(prompt_length) + "/200 characters). Please use !gpt again to re-try")
 
 
