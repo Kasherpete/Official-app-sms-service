@@ -56,20 +56,21 @@ async def weather_command(msg):
         weather_description = z[0]["description"]
 
         # return data to the user
+        msg.send_sms(f"Weather in {str(city_name)}, {str(state_code)}: {str(weather_description)}. Temp: {str(current_temperature)}\u00B0\u0046. Air pressure: {current_pressure}hpa. Humidity: {str(current_humidity)}%.")
+        await asyncio.sleep(2)
+        msg.send_sms("As an added reminder, text !help to see new commands. You can also send @gabb01 to 81010 to "
+                     "sign up to receive updates that come out.")
 
-        msg.send_sms("Weather in " + str(f"{city_name}, {state_code}:"))
-        await asyncio.sleep(1)
-
-        msg.send_sms(str(weather_description))
-        await asyncio.sleep(1)
-
-        msg.send_sms("Temperature: " + str(current_temperature) + "\u00B0\u0046")
-        await asyncio.sleep(1)
-
-        msg.send_sms("Air Pressure: " + str(current_pressure) + "hpa")
-        await asyncio.sleep(1)
-
-        msg.send_sms("Humidity: " + str(current_humidity) + "%")
+        # #msg.send_sms(str(weather_description))
+        # #await asyncio.sleep(1)
+        #
+        # msg.send_sms("Temperature: " + str(current_temperature) + "\u00B0\u0046")
+        # await asyncio.sleep(1)
+        #
+        # msg.send_sms("Air Pressure: " + str(current_pressure) + "hpa")
+        # await asyncio.sleep(1)
+        #
+        # msg.send_sms("Humidity: " + str(current_humidity) + "%")
 
     else:
         error1 = "ERROR:WEATHER_NO_RESPONSE. Please check that you entered the correct city, or say !status to check the weather server's status."

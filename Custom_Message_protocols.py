@@ -49,7 +49,7 @@ def send_sms(content, msg):
 
 
     for message in list_response:
-        time.sleep(3)
+        time.sleep(4)
 
         try:
             msg.send_sms(message)
