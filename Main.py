@@ -23,8 +23,8 @@ print("Running Program.")
 new_messages = client.get_unread_messages()
 for message in new_messages:
     message.mark_as_read()
-    message.send_sms("Service is now back online. You may now send your command.")
-    print("Notified user of service now online")
+    # message.send_sms("Service is now back online. You may now send your command.")
+    # print("Notified user of service now online")
 
 # checks for new messages, then activate the command
 
