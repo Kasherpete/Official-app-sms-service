@@ -35,5 +35,8 @@ async def translate_command(msg):
             msg.send_sms("Sorry, the server was unable to complete the request. This is due to a large volume of "
                          "requests at this time. This is a known error, and is being actively worked on. Thank you "
                          "for your patience!")
+        except ValueError:
+            msg.send_sms("You sent an invalid language abbreviation. Send the command again and say !help to get the "
+                         "full list of abbreviations")
 
 
