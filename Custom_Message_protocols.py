@@ -43,7 +43,7 @@ async def ask(question, msg, timeout, default):
 
 def send_sms(content, msg):
     global last_msg_sent
-    sleep_time = time.time() - last_msg_sent + 4
+    sleep_time = (last_msg_sent + 4) - time.time()
     if (sleep_time > 0):
         time.sleep(sleep_time)
     sms_limit = 450
