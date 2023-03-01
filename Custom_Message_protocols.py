@@ -17,7 +17,6 @@ last_msg_sent = 0
 
 
 async def ask(question, msg, timeout, default):
-    global last_msg_sent
     timer_timeout = time.perf_counter()
     msg.send_sms(question)
 
@@ -43,6 +42,7 @@ async def ask(question, msg, timeout, default):
 
 
 def send_sms(content, msg):
+    global last_msg_sent
     sleep_time = time.time() - last_msg_sent + 4
     if (sleep_time > 0):
         time.sleep(sleep_time)
