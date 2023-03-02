@@ -1,5 +1,7 @@
-import requests
 import json
+
+import requests
+
 import Custom_Message_protocols as sms
 
 
@@ -24,7 +26,7 @@ def dict_basic(msg, user_response):
         r = r[0]
         r = r["meanings"]
         for meaning in r:  # how many meanings
-            new = meaning["definitions"][0]
+
             completion += f'{meaning["partOfSpeech"]}: '
             completion += f'{meaning["definitions"][0]["definition"]} '
         # send message

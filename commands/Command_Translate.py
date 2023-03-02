@@ -1,4 +1,4 @@
-import httpcore
+from httpcore import _exceptions
 from googletrans import Translator
 import googletrans.constants
 import Custom_Message_protocols as sms
@@ -7,7 +7,8 @@ import Main
 
 async def translate_command(msg):
 
-    user_response = await sms.ask("Input the two letter language abbreviation your text is in. (For a list of abbreviations, say help.)", msg, 60, "en")
+    user_response = await sms.ask("Input the two letter language abbreviation your text is in. (For a list of "
+                                  "abbreviations, say help.)", msg, 60, "en")
     if str.lower(user_response) == "help":
         lang = str(googletrans.constants.LANGUAGES)
         sms.send_sms(lang, msg)
@@ -31,7 +32,7 @@ async def translate_command(msg):
 
             # send msgs
             sms.send_sms(new_text, msg)
-        except httpcore._exceptions.ReadTimeout:
+        except _exceptions.ReadTimeout:
             msg.send_sms("Sorry, the server was unable to complete the request. This is due to a large volume of "
                          "requests at this time. This is a known error, and is being actively worked on. Thank you "
                          "for your patience!")

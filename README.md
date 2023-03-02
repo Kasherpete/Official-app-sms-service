@@ -26,6 +26,8 @@ if PyTextNow does not work or an incorrect version installs, use
  certain characters. This includes quotation marks and the reverse backslash (so you cannot use \n). The program deals 
  with this by inserting multiple spaces instead of \n, and * instead of ".
  # Versions and Updates
+ 1.4.52 - Bug fixes, more spam prevention
+
  1.4.5 - Added bug fixes that make service look like spam. Weather responses are put in one single message and when
  long texts are broken up, they now get sent at an interval of four.
 

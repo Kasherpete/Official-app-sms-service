@@ -1,8 +1,9 @@
-import pytextnow as pytn
+from pytextnow import Client
 import Credentials
 import Custom_Message_protocols as sms
-import asyncio
+from asyncio import sleep
 import openai
+
 import Main
 
 # some counters
@@ -15,7 +16,7 @@ valid_command_count = 0
 username = Credentials.username()
 sid = Credentials.sid()
 csrf = Credentials.csrf()
-client = pytn.Client(username, sid_cookie=sid, csrf_cookie=csrf)
+client = Client(username, sid_cookie=sid, csrf_cookie=csrf)
 
 
 async def admin_command(msg):
@@ -70,4 +71,4 @@ async def admin_command(msg):
     else:
         print(f'user "{msg.number} tried to access admin and failed. user locked for one minute')
         msg.send_sms("Incorrect password. User locked for one minute.")
-        await asyncio.sleep(60)
+        await sleep(60)

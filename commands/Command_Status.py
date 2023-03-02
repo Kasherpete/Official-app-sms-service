@@ -57,7 +57,6 @@ async def status_command(msg):
     else:
         status_list += "dictionary_server: NO_RESPONSE. "
 
-
     # send off status
 
     msg.send_sms(status_list)
