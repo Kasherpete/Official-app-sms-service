@@ -20,7 +20,7 @@ def weather_key():
 
 
 def admin_password():
-    password = "Eth0s2023!"
+    password = ""
     return password
 
 
