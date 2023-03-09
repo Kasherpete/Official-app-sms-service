@@ -13,10 +13,8 @@ csrf = Credentials.csrf()
 client = pytn.Client(username, sid_cookie=sid, csrf_cookie=csrf)
 
 
-last_msg_sent = 0
-
-
 async def ask(question, msg, timeout, default):
+
     timer_timeout = time.perf_counter()
     msg.send_sms(question)
 
@@ -42,10 +40,6 @@ async def ask(question, msg, timeout, default):
 
 
 def send_sms(content, msg):
-    global last_msg_sent
-    sleep_time = (last_msg_sent + 4) - time.time()
-    if (sleep_time > 0):
-        time.sleep(sleep_time)
     sms_limit = 450
 
     content = content.replace("\n", '      ')
@@ -58,7 +52,6 @@ def send_sms(content, msg):
         time.sleep(4)
 
         try:
-            last_msg_sent = time.time()
             msg.send_sms(message)
         except pytextnow.error.FailedRequest:
             print(

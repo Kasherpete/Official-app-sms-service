@@ -1,31 +1,28 @@
 # Details
  This is a project by the Eth0s group to enable certain features over sms available.
  
- The sms service we use is PyTextNow, which runs off of textnow. To get the sid, csrf, and username found in
- credentials.py, refer to https://github.com/leogomezz4t/PyTextNow_API .
+ This service runs off of twilio. You will need an active phone number and your SID/auth token.
+ The sms service we used to use was PyTextNow, which runs off of textnow. To get the sid, csrf, and username found in
+ credentials.py, ONLY FOR OLDER VERSIONS refer to https://github.com/leogomezz4t/PyTextNow_API.
  
 # Setup
- You will need a openweathermap account and key, openAI account and key, and a TextNow account. As for the dependencies,
+ You will need a openweathermap account and key, openAI account and key, and a Twilio account/phone number. As for the dependencies,
  they can be found in requirements.txt. If you have any problems with importing modules, got to the link above to 
  install any other requirements.
- 
-Run these commands:
 
-    pip install pytextnow
-    pip install openai
-    pip install requests
 
-if PyTextNow does not work or an incorrect version installs, use
-
-    git clone https://github.com/leogomezz4t/PyTextNow_API.git
  # Admin Command
  You will find a command file named Command_Admin.py. This file is for use at your disposal for any of your needs,
  although we may add some functionality to this command that gets uploaded to github.
  # Known Limitations
- There are a few "bugs" that are present, mainly due to PyTextNow version 1.1.9 that make it not possible to send 
+ Below version 1.7 beta 1, There were a few "bugs" that were present, mainly due to PyTextNow version 1.1.9 that make it not possible to send 
  certain characters. This includes quotation marks and the reverse backslash (so you cannot use \n). The program deals 
- with this by inserting multiple spaces instead of \n, and * instead of ".
+ with this by inserting multiple spaces instead of \n, and * instead of ", although this will be changed after implementing
+ twilio.
  # Versions and Updates
+ 1.7 beta 1 - Utilizes the twilio helper (https://github.com/Kasherpete/twilio-helper) to start porting over to using
+ twilio. It is almost completely dysfunctional as far as the commands go.
+
  1.4.52 - Bug fixes, more spam prevention
 
  1.4.5 - Added bug fixes that make service look like spam. Weather responses are put in one single message and when

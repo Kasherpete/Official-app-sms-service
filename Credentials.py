@@ -1,4 +1,3 @@
-# TODO: delete this comment and delete credentials
 def username():
     textnow_username = ""
     return textnow_username
@@ -20,10 +19,22 @@ def weather_key():
 
 
 def admin_password():
-    password = ""
+    password = "Eth0s2023!"
     return password
 
 
 def openai_key():
     key = ""
     return key
+
+
+def twilio_get_number():
+    return ""
+
+
+def twilio_get_sid():
+    return ""
+
+
+def twilio_get_auth():
+    return ""
