@@ -1,15 +1,15 @@
 from Main import client
-import asyncio
-import time
+from asyncio import sleep
+from time import perf_counter, sleep
 
 
 async def ask(question, msg, timeout, default):
-    timer_timeout = time.perf_counter()
+    timer_timeout = perf_counter()
     msg.send_sms(question)
 
-    while time.perf_counter() - timer_timeout <= timeout:
-        await asyncio.sleep(1)
-        new_messages = client.get_unread_messages(2)
+    while perf_counter() - timer_timeout <= timeout:
+        await sleep(1)
+        new_messages = client.get_unread_messages(6)  # idk why I make it this number, it seems best for high capacity
 
         for message in new_messages:
 
@@ -19,7 +19,7 @@ async def ask(question, msg, timeout, default):
 
     # timeout error messages
 
-    await asyncio.sleep(1)
+    await sleep(1)
     if default != "":
         msg.send_sms(f'ERROR:TIMEOUT. User took too long to respond. Default response: {default}.')
     else:
@@ -35,18 +35,18 @@ def send_sms(content, msg):
 
     for message in list_response:
         msg.send_sms(message)
-        time.sleep(3)
+        sleep(3)
 
 
 # this function is a copy of the sms.ask, but it returns the message class instead of str
 
 async def ask_advanced(question, msg, timeout, default):
-    timer_timeout = time.perf_counter()
+    timer_timeout = perf_counter()
     msg.send_sms(question)
 
-    while time.perf_counter() - timer_timeout <= timeout:
-        await asyncio.sleep(1)
-        new_messages = client.get_unread_messages(2)
+    while perf_counter() - timer_timeout <= timeout:
+        await sleep(1)
+        new_messages = client.get_unread_messages(6)
 
         for message in new_messages:
 
@@ -56,7 +56,7 @@ async def ask_advanced(question, msg, timeout, default):
 
     # timeout error messages
 
-    await asyncio.sleep(1)
+    await sleep(1)
     if default != "":
         msg.send_sms(f'ERROR:TIMEOUT. User took too long to respond. Default response: {default}.')
     else:

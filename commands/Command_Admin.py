@@ -1,5 +1,3 @@
-from pytextnow import Client
-import Credentials
 import Custom_Message_protocols as sms
 from asyncio import sleep
 # import openai
@@ -14,10 +12,7 @@ valid_command_count = 0
 
 # client initialization
 
-username = Credentials.username()
-sid = Credentials.sid()
-csrf = Credentials.csrf()
-client = Client(username, sid_cookie=sid, csrf_cookie=csrf)
+
 
 
 async def admin_command(msg):

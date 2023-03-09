@@ -1,7 +1,5 @@
 import json
-
 import requests
-
 import Custom_Message_protocols as sms
 
 

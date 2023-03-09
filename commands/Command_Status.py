@@ -1,15 +1,6 @@
-import pytextnow as pytn
-import Credentials
 import requests
-
+from Credentials import weather_key
 import Main
-
-# client initialization
-
-username = Credentials.username()
-sid = Credentials.sid()
-csrf = Credentials.csrf()
-client = pytn.Client(username, sid_cookie=sid, csrf_cookie=csrf)
 
 
 async def status_command(msg):
@@ -18,7 +9,7 @@ async def status_command(msg):
     # get server responses
 
     Main.weather_requests += 1
-    weather_response = requests.get("http://api.openweathermap.org/data/2.5/weather?" + "appid=" + Credentials.weather_key() + "&q=" + "chicago" + "," + "IL" + "," + "US")
+    weather_response = requests.get("http://api.openweathermap.org/data/2.5/weather?" + "appid=" + weather_key() + "&q=" + "chicago" + "," + "IL" + "," + "US")
     openai_response = requests.get("https://status.openai.com/")
     dictionary_response = requests.get("https://api.dictionaryapi.dev/api/v2/entries/en/word")
 

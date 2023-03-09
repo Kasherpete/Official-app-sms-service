@@ -20,6 +20,8 @@
  with this by inserting multiple spaces instead of \n, and * instead of ", although this will be changed after implementing
  twilio.
  # Versions and Updates
+ 1.7 Beta Release 5 - bug, performance fixes/optimizations
+
  1.7 Beta Release 4 - All commands functional with the exception of !qr. Improved ChatGPT experience as well as bug
  fixes, documentation, error handling, and minor added features.
 

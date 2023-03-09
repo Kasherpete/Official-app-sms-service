@@ -1,5 +1,4 @@
 import math
-import pytextnow as pytn
 import requests
 import Credentials
 import Custom_Message_protocols as sms
@@ -7,10 +6,7 @@ import Main
 
 # client initialization
 
-username = Credentials.username()
-sid = Credentials.sid()
-csrf = Credentials.csrf()
-client = pytn.Client(username, sid_cookie=sid, csrf_cookie=csrf)
+
 
 
 async def weather_command(msg):
