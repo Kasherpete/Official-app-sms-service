@@ -6,6 +6,7 @@ import openai
 
 import Main
 
+
 # some counters
 
 command_count = 0
@@ -43,6 +44,7 @@ async def admin_command(msg):
             # Generate a response
 
             msg.send_sms("GPT-3 is generating a response, Please Wait...")
+
             Main.gpt_requests += 1
             completion = openai.Completion.create(
                 engine=model_engine,

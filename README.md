@@ -20,6 +20,8 @@
  with this by inserting multiple spaces instead of \n, and * instead of ", although this will be changed after implementing
  twilio.
  # Versions and Updates
+ 1.7 beta 3 - Most commands seem to now work except for !qr.
+
  1.7 beta 1 - Utilizes the twilio helper (https://github.com/Kasherpete/twilio-helper) to start porting over to using
  twilio. It is almost completely dysfunctional as far as the commands go.
 
