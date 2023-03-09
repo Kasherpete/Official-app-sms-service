@@ -44,7 +44,7 @@ class Message:
             from_=Credentials.twilio_get_number(),
             media_url=[url],
             to=self.number
-        )
+            )
 
     # delete message
 

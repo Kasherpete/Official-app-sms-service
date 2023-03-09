@@ -15,7 +15,7 @@ if __name__ == "__main__":
     from commands.Command_Admin import command_count, valid_command_count, admin_command
     from commands.Command_Help import help_command
     from commands.Command_Weather import weather_command
-    # from commands.Command_QR import qr_command
+    from commands.Command_QR import qr_command
     from commands.Command_Status import status_command
     from commands.Command_Secret import secret_command
     from commands.Command_Details import details_command
@@ -82,8 +82,7 @@ if __name__ == "__main__":
 
                 elif str.lower(message_content) == "!qr" or str.lower(message_content) == "!qrcode":
                     print("command activated: qr code")
-                    msg.send_sms("This command is currently broken, we are doing our best to fix it soon.")
-                    # asyncio.run(qr_command(msg))
+                    asyncio.run(qr_command(msg))
 
                 elif str.lower(message_content) == "!translate":
                     print("command activated: translate")
