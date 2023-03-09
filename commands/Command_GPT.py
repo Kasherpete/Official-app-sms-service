@@ -6,43 +6,41 @@ import Main
 # client initialization
 
 openai.api_key = Credentials.openai_key()
-model_engine = "text-davinci-003"
-max_tokens = 450
 
 
 async def gpt_command(msg):
-    user_response = await sms.ask("Input your prompt now (Character limit: 200)", msg, 60, "")
-    prompt = user_response
 
-    # checks to make sure user's input is <= 80 chars
+    # ask initial prompt
 
-    if len(prompt) <= 200:
+    user_response = await sms.ask("Input your prompt now. To exit conversation, say #quit.", msg, 60, "")
+    list1 = [{"role": "user", "content": user_response}]
+
+    while True:
+
+        if user_response == "#quit" or user_response == "quit" or user_response == "!quit":
+            msg.send_sms("Exited conversation.")
+            break
 
         # Generate a response
 
-        msg.send_sms("GPT-3 is generating a response, Please Wait...")
         Main.gpt_requests += 1
-        completion = openai.Completion.create(
-            engine=model_engine,
-            prompt=prompt,
-            max_tokens=max_tokens,
-            temperature=0.5,
-            top_p=0.5,
-            frequency_penalty=0,
-            presence_penalty=0
+        completion = openai.ChatCompletion.create(
+            model="gpt-3.5-turbo",
+            messages=list1
         )
 
-        # break up the response into separate texts for longer responses
-        if completion.usage["completion_tokens"] >= 420:
-            sms.send_sms(f"GPT-3: {completion.choices[0].text} (GPT-3's response may be cut off due to usage limits to keep our costs down.)", msg)
-        else:
-            sms.send_sms(f'GPT-3: {completion.choices[0].text}', msg)
+        gpt_response = str(completion.choices[0]["message"]["content"])
+        if gpt_response[:2] == "\n\n":
+            # gets rid of redundant \n
+            gpt_response = gpt_response[2:]
 
-    # does this if prompt entered is over 80 chars
+        # append ChatGPT's response to the conversation
 
-    else:
-        prompt_length = len(prompt)
-        print("ERROR: request too long. (" + str(prompt_length) + "/200 characters). Please use !gpt again to re-try")
-        msg.send_sms("ERROR: request too long. (" + str(prompt_length) + "/200 characters). Please use !gpt again to re-try")
+        list1.append({"role": "assistant", "content": gpt_response})
 
+        user_response = await sms.ask(f'ChatGPT: {gpt_response}', msg, 60, "#quit")
+
+        # append user's response to the conversation
+
+        list1.append({"role": "user", "content": user_response})
 

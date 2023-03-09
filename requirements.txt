@@ -1,5 +1,6 @@
 PyTextNow~=1.1.9
 requests~=2.25.1
-openai~=0.26.5
 googletrans~=4.0.0rc1
 httpcore~=0.9.1
+twilio~=7.16.4
+openai~=0.27.1

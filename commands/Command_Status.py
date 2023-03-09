@@ -29,33 +29,33 @@ async def status_command(msg):
     # weather
 
     if weather_response.ok:
-        status_list += "weather_server: ONLINE. "
+        status_list += "weather_server: ONLINE.\n"
     else:
-        status_list += "weather_server: NO_RESPONSE. "
+        status_list += "weather_server: NO_RESPONSE.\n"
 
     # sms
 
     if True:
-        status_list += "sms_server: ONLINE. "
+        status_list += "sms_server: ONLINE.\n"
 
     # gpt
 
     if openai_response.ok:
-        status_list += "openAI_server: ONLINE. "
+        status_list += "openAI_server: ONLINE.\n"
     else:
-        status_list += "openAI_server: NO_RESPONSE. "
+        status_list += "openAI_server: NO_RESPONSE.\n"
 
     # google translate
 
     if True:
-        status_list += "translator: ONLINE. "
+        status_list += "translator: ONLINE.\n"
 
     # dictionary
 
     if dictionary_response.ok:
-        status_list += "dictionary_server: ONLINE. "
+        status_list += "dictionary_server: ONLINE.\n"
     else:
-        status_list += "dictionary_server: NO_RESPONSE. "
+        status_list += "dictionary_server: NO_RESPONSE.\n"
 
     # send off status
 

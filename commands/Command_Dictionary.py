@@ -18,9 +18,15 @@ async def dict_command(msg):
 
 
 def dict_basic(msg, user_response):
+
+    # request definition
+
     r = requests.get(f"https://api.dictionaryapi.dev/api/v2/entries/en/{user_response}")
     completion = ""
     r = json.loads(r.text)
+
+    # parse data
+
     try:
         # parse
         r = r[0]
@@ -29,16 +35,25 @@ def dict_basic(msg, user_response):
 
             completion += f'{meaning["partOfSpeech"]}: '
             completion += f'{meaning["definitions"][0]["definition"]} '
+
         # send message
+
         sms.send_sms(completion, msg)
+
     except KeyError:
         msg.send_sms("ERROR:INVALID_REQUEST. This error will be caused because of an incorrectly spelled word.")
 
 
 def dict_synonym(msg, user_response):
+
+    # make request
+
     r = requests.get(f"https://api.dictionaryapi.dev/api/v2/entries/en/{user_response}")
     completion = "synonyms: "
     r = json.loads(r.text)
+
+    # parse data
+
     try:
         # parse
         r = r[0]
@@ -47,18 +62,26 @@ def dict_synonym(msg, user_response):
             new = meaning["synonyms"]
             for definition in new:
                 completion += f"{definition}, "
+
         # send message
+
         sms.send_sms(completion, msg)
+
     except KeyError:
         msg.send_sms("ERROR:INVALID_REQUEST. This error will be caused because of an incorrectly spelled word.")
 
 
 def dict_advanced(msg, user_response):
 
+    # request
+
     r = requests.get(f"https://api.dictionaryapi.dev/api/v2/entries/en/{user_response}")
     completion = ""
     completion += "Definitions: "
     r = json.loads(r.text)
+
+    # parse
+
     try:
         # parse
         r = r[0]
@@ -67,7 +90,10 @@ def dict_advanced(msg, user_response):
             new = meaning["definitions"]
             for definition in new:
                 completion += f'{definition["definition"]}, '
+
         # send message
+
         sms.send_sms(completion, msg)
+
     except KeyError:
         msg.send_sms("ERROR:INVALID_REQUEST. This error will be caused because of an incorrectly spelled word.")

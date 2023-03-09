@@ -16,7 +16,6 @@ dummy_list = []
 
 
 class Message:
-
     message_type = ""  # sms or mms
     content = ""  # message body
     sid = ""  # ID of message
@@ -30,22 +29,22 @@ class Message:
     def send_sms(self, content):
         twilio_client.messages \
             .create(
-                body=content,
-                from_=Credentials.twilio_get_number(),
-                to=self.number
+            body=content,
+            from_=Credentials.twilio_get_number(),
+            to=self.number
 
-            )
+        )
 
     # respond with mms
 
     def send_mms(self, content, url):
         twilio_client.messages \
             .create(
-                body=content,
-                from_=Credentials.twilio_get_number(),
-                media_url=[url],
-                to=self.number
-            )
+            body=content,
+            from_=Credentials.twilio_get_number(),
+            media_url=[url],
+            to=self.number
+        )
 
     # delete message
 
@@ -93,7 +92,6 @@ class Message:
         return r2.content, mime_type
 
 
-
 class Client:
     number = ""
     sid = ""
@@ -129,25 +127,22 @@ class Client:
                 self.mark_as_read(message.sid)
         return response
 
-
     def send_sms(self, content, to):
         twilio_client.messages \
             .create(
-                body=content,
-                from_=self.number,
-                to=to
-            )
-
+            body=content,
+            from_=self.number,
+            to=to
+        )
 
     def send_mms(self, content, to, url):
         twilio_client.messages \
             .create(
-                body=content,
-                from_=self.number,
-                media_url=[url],
-                to=to
-            )
-
+            body=content,
+            from_=self.number,
+            media_url=[url],
+            to=to
+        )
 
     def mark_as_read(self, sid):
         try:

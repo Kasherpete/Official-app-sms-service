@@ -14,7 +14,7 @@ async def help_command(msg, message_content):
     # if message is just "!help"
 
     if str.lower(message_content) == "!help":
-        msg.send_sms("The current commands are: !weather, !help, !details, !bulletin, !status, !GPT, !qr, !translate, and !dictionary. Say !help <command> to get help on that specific command, like !help weather or !help status. Also, if you have not already, send @gabb01 to 81010 to sign up to receive announcements for future updates.")
+        msg.send_sms("The current commands are: !weather, !help, !details, !bulletin, !status, !GPT, !qr, !translate, and !dictionary. Say !help <command> to get help on that specific command, like !help weather or !help status. !qr does not currently work at this time. Also, if you have not already, send @gabb01 to 81010 to sign up to receive announcements for future updates.")
 
     # if message is "!help <command>"
 

@@ -20,19 +20,22 @@
  with this by inserting multiple spaces instead of \n, and * instead of ", although this will be changed after implementing
  twilio.
  # Versions and Updates
+ 1.7 Beta Release 4 - All commands functional with the exception of !qr. Improved ChatGPT experience as well as bug
+ fixes, documentation, error handling, and minor added features.
+
  1.7 beta 3 - Most commands seem to now work except for !qr.
 
  1.7 beta 1 - Utilizes the twilio helper (https://github.com/Kasherpete/twilio-helper) to start porting over to using
  twilio. It is almost completely dysfunctional as far as the commands go.
 
- 1.4.52 - Bug fixes, more spam prevention
+ 1.4.52 - Bug fixes, more spam prevention.
 
  1.4.5 - Added bug fixes that make service look like spam. Weather responses are put in one single message and when
  long texts are broken up, they now get sent at an interval of four.
 
  1.4.43 - Minor updates to admin, bulletin, gpt, translate commands and added error correction.
 
- 1.4.4 - Updated dictionary command
+ 1.4.4 - Updated dictionary command.
 
  1.4.38 - Added qr code reader in addition to the already existing qr code generator.
 
