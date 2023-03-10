@@ -14,7 +14,7 @@ if __name__ == "__main__":
     import defs
     from commands.Command_Admin import command_count, valid_command_count, admin_command
     from commands.Command_Help import help_command
-    from commands.Command_Weather import weather_command
+    from commands.Command_Weather import weather
     from commands.Command_QR import qr_command
     from commands.Command_Status import status_command
     from commands.Command_Secret import secret_command
@@ -54,7 +54,7 @@ if __name__ == "__main__":
 
                 if str.lower(message_content) == "!weather":
                     print("command activated: weather")
-                    asyncio.run(weather_command(msg))
+                    asyncio.run(weather(msg))
 
                 elif str.lower(message_content)[:5] == "!help":
                     print("command activated: help")

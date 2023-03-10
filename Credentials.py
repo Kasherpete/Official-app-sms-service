@@ -1,20 +1,19 @@
-# TODO: delete this comment and delete credentials
-def username():
-    textnow_username = ""
-    return textnow_username
+# def username():
+#     textnow_username = ""
+#     return textnow_username
+#
+#
+# def sid():
+#     sid_token = ""
+#     return sid_token
+#
+#
+# def csrf():
+#     csrf_token = ""
+#     return csrf_token
 
 
-def sid():
-    sid = ""
-    return sid
-
-
-def csrf():
-    csrf = ""
-    return csrf
-
-
-def weather_key():
+def open_weather_key():
     open_weathermap_key = ""
     return open_weathermap_key
 
@@ -38,4 +37,8 @@ def twilio_get_sid():
 
 
 def twilio_get_auth():
+    return ""
+
+
+def weatherapi_key():
     return ""
