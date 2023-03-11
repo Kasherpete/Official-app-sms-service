@@ -65,7 +65,7 @@ if __name__ == "__main__":
                 else:
                     msg_json.update({msg.number: 1})
 
-                if msg_json[msg.number] < 2 or msg.number in patron_list:
+                if msg_json[msg.number] < 15 or msg.number in patron_list:
 
                     command_count += 1
                     valid_command_count += 1
@@ -135,11 +135,6 @@ if __name__ == "__main__":
                         print(f'Unknown command "{message_content}".')
                         valid_command_count -= 1
                         msg.send_sms(error_message)
-
-
-                    print(msg_json[msg.number])
-
-
 
 
                 else:
