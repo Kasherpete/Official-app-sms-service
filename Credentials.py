@@ -1,7 +1,7 @@
 
 
 def open_weather_key():
-    open_weathermap_key = "1f8498605a482f805295d7b502e1ccf7"
+    open_weathermap_key = ""
     return open_weathermap_key
 
 
@@ -11,24 +11,24 @@ def admin_password():
 
 
 def openai_key():
-    key = "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"
+    key = ""
     return key
 
 
 def twilio_get_number():
-    return "+13156023286"
+    return ""
 
 
 def twilio_get_sid():
-    return "ACb887df8b164c24e6a3958d8c89d6d9b3"
+    return ""
 
 
 def twilio_get_auth():
-    return "4d97ad399863af647522f428d9a7ae9b"
+    return ""
 
 
 def weatherapi_key():
-    return "c01b8df35ba141cc998210059231003"
+    return ""
 
 
 def patreon_password():
