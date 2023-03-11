@@ -20,6 +20,8 @@
  with this by inserting multiple spaces instead of \n, and * instead of ", although this will be changed after implementing
  twilio.
  # Versions and Updates
+ 1.7.3 - Added usage limit for each number. Limit 15 per day. Bypassed by saying !add and entering correct password.
+
  1.7.2 - Added weather features
 
  1.7.1 - Every command now works. The code is now officially TextNow independent, and is being run completely off of Twilio.

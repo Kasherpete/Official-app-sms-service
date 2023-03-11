@@ -153,6 +153,6 @@ class Client:
                 dummy_list.append(sid)
 
     def mark_all_read(self):
-        messages = self.get_unread_messages()
+        messages = self.get_unread_messages(50)
         for message in messages:
             message.mark_as_read()

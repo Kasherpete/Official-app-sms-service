@@ -7,8 +7,7 @@ import Main
 
 # some counters
 
-command_count = 0
-valid_command_count = 0
+
 
 # client initialization
 
@@ -32,7 +31,7 @@ async def admin_command(msg):
             msg.send_sms("Just use the !gpt command, it does the same thing")
 
         elif user_response == "2":
-            msg.send_sms(f"Valid commands sent: {str(valid_command_count)}. Total commands sent: {str(command_count)}. Weather requests made: {str(Main.weather_requests)}. GPT-3 requests made: {str(Main.gpt_requests)}. Translate requests made: {str(Main.translate_requests)}. Note: these are measured from the start of the program.")
+            msg.send_sms(f"Valid commands sent: {str(Main.valid_command_count)}. Total commands sent: {str(Main.command_count)}. Weather requests made: {str(Main.weather_requests)}. GPT-3 requests made: {str(Main.gpt_requests)}. Translate requests made: {str(Main.translate_requests)}. Note: these are measured from the start of the program.")
 
     # if user gets password wrong, lock
 

@@ -5,7 +5,7 @@ async def help_command(msg, message_content):
     # if message is just "!help"
 
     if str.lower(message_content) == "!help":
-        msg.send_sms("The current commands are: !weather, !help, !details, !bulletin, !status, !GPT, !qr, !translate, and !dictionary. Say !help <command> to get help on that specific command, like !help weather or !help status. Also, if you have not already, send @gabb01 to 81010 to sign up to receive announcements for future updates.")
+        msg.send_sms("The current commands are: !weather, !help, !details, !bulletin, !status, !GPT, !qr, !translate, !dictionary, !add, and !test. Say !help <command> to get help on that specific command, like !help weather or !help status. Also, if you have not already, send @gabb01 to 81010 to sign up to receive announcements for future updates.")
 
     # if message is "!help <command>"
 
@@ -38,6 +38,12 @@ async def help_command(msg, message_content):
 
     elif str.lower(message_content) == "!help bulletin" or str.lower(message_content) == "!help !bulletin" or str.lower(message_content) == "!help news" or str.lower(message_content) == "!help !news":
         msg.send_sms("The !bulletin command will inform you on any development currently being made on this service. You can also say !news.")
+
+    elif str.lower(message_content) == "!help add" or str.lower(message_content) == "!help !add":
+        msg.send_sms("The !add command will add you to a list of Premium users. You can only be added if you are a Patreon Supporter.")
+
+    elif str.lower(message_content) == "!help test" or str.lower(message_content) == "!help !test":
+        msg.send_sms("The !test command checks to see if you are in the list of Premium Members. This command is mainly for bug testing purposes.")
 
     # if command is invalid
 

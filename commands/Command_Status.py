@@ -1,5 +1,4 @@
 import requests
-from Credentials import weatherapi_key
 import Main
 from Credentials import weatherapi_key
 
