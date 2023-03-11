@@ -138,7 +138,7 @@ if __name__ == "__main__":
 
 
                 else:
-                    msg.send_sms("You have reached your limit of commands for the day.")
+                    msg.send_sms("You have reached your limit of commands for the day. Sign up on our patreon here to become a Premium Member: patreon.com/Eth0sSMSOfficialPatreon")
 
         # how often to check for new messages. I have found this is the most stable, keep on this number if you can.
 
