@@ -83,13 +83,13 @@ async def v2weather(msg):
             # radar
 
             if user_response == "3":
-                msg.send_sms("This feature is currently in development.")
-                # msg.send_mms("", "https://radar.weather.gov/ridge/standard/CONUS-LARGE_loop.gif")
+                # msg.send_sms("This feature is currently in development.")
+                msg.send_mms("", "https://radar.weather.gov/ridge/standard/CONUS_loop.gif")
             elif user_response == "4":
-                msg.send_sms("This feature is currently in development.")
-                # user_response = await sms.ask("enter radar station name.", msg, 60, "1")
-                # r = requests.get("https://radar.weather.gov/ridge/standard/" + str.upper(user_response) + "_loop.gif")
-                # print(r.content)
+                # msg.send_sms("This feature is currently in development.")
+                user_response = await sms.ask("enter radar station name.", msg, 60, "CONUS")
+                msg.send_mms("", "https://radar.weather.gov/ridge/standard/" + str.upper(user_response) + "_loop.gif")
+
 
             # forecast
 
@@ -149,7 +149,7 @@ async def v2weather(msg):
                 r = requests.get(f"http://api.weatherapi.com/v1/current.json?key={Credentials.weatherapi_key()}&q={area}&aqi=no")
                 r = json.loads(r.text)
                 msg.send_sms(
-                    f"Weather in {r['location']['name']}, {r['location']['region']}: {r['current']['condition']['text']}\nTemp: {int(r['current']['temp_f'])}F\nWind: {int(r['current']['wind_mph'])}mph\nWindGust: {int(r['current']['gust_mph'])}mph\nWindDirection: {r['current']['wind_dir']}, {r['current']['wind_degree']}\nPressure: {r['current']['pressure_in']}in\nHumidity: {r['current']['humidity']}%\nCloudCover: {r['current']['cloud']}%\nCode {r['current']['condition']['code']}")
+                    f"Weather in {r['location']['name']}, {r['location']['region']}: {r['current']['condition']['text']}\nTemp: {int(r['current']['temp_f'])}F\nWind: {int(r['current']['wind_mph'])}mph\nWindGust: {int(r['current']['gust_mph'])}mph\nWindDirection: {r['current']['wind_dir']}, {r['current']['wind_degree']}\nPressure: {r['current']['pressure_in']}in\nHumidity: {r['current']['humidity']}%\nCloudCover: {r['current']['cloud']}%\nLat {r['location']['lat']} Lon {r['location']['lon']}{r['current']['condition']['code']}")
 
             else:
                 # if invalid response

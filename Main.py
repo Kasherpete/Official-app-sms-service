@@ -70,57 +70,56 @@ if __name__ == "__main__":
                     command_count += 1
                     valid_command_count += 1
                     message_content = msg.content
-                    print(message_content)
                     if str.lower(message_content) == "!v1weather":
-                        print("command activated: v1weather")
+                        print(f"command activated: v1weather       {time.strftime('%H:%M', time.localtime())}")
                         asyncio.run(v1weather(msg))
 
                     elif str.lower(message_content) == "!weather" or str.lower(message_content) == "!v2weather":
-                        print("command activated: weather")
+                        print(f"command activated: weather       {time.strftime('%H:%M', time.localtime())}")
                         asyncio.run(v2weather(msg))
 
                     elif str.lower(message_content)[:5] == "!help":
-                        print("command activated: help")
+                        print(f"command activated: help       {time.strftime('%H:%M', time.localtime())}")
                         asyncio.run(help_command(msg, message_content))
 
                     elif str.lower(message_content) == "!details":
-                        print("command activated: details")
+                        print(f"command activated: details       {time.strftime('%H:%M', time.localtime())}")
                         asyncio.run(details_command(msg))
 
                     elif str.lower(message_content) == "!status":
-                        print("command activated: status")
+                        print(f"command activated: status       {time.strftime('%H:%M', time.localtime())}")
                         asyncio.run(status_command(msg))
 
                     elif str.lower(message_content) == "!secret":
-                        print("command activated: secret")
+                        print(f"command activated: secret       {time.strftime('%H:%M', time.localtime())}")
                         asyncio.run(secret_command(msg))
 
                     elif str.lower(message_content) == "!admin":
-                        print("command activated: admin")
+                        print(f"command activated: admin       {time.strftime('%H:%M', time.localtime())}")
                         asyncio.run(admin_command(msg))
 
                     elif str.lower(message_content) == "!gpt" or str.lower(message_content) == "!chatgpt":
-                        print("command activated: gpt")
+                        print(f"command activated: gpt       {time.strftime('%H:%M', time.localtime())}")
                         asyncio.run(gpt_command(msg))
 
                     elif str.lower(message_content) == "!qr" or str.lower(message_content) == "!qrcode":
-                        print("command activated: qr code")
+                        print(f"command activated: qr code       {time.strftime('%H:%M', time.localtime())}")
                         asyncio.run(qr_command(msg))
 
                     elif str.lower(message_content) == "!translate":
-                        print("command activated: translate")
+                        print(f"command activated: translate       {time.strftime('%H:%M', time.localtime())}")
                         asyncio.run(translate_command(msg))
 
                     elif str.lower(message_content) == "!dictionary":
-                        print("command activated: dictionary")
+                        print(f"command activated: dictionary       {time.strftime('%H:%M', time.localtime())}")
                         asyncio.run(dict_command(msg))
 
                     elif str.lower(message_content) == "!bulletin" or str.lower(message_content) == "!news":
-                        print("command activated: bulletin")
+                        print(f"command activated: bulletin       {time.strftime('%H:%M', time.localtime())}")
                         bulletin_command(msg)
 
                     elif str.lower(message_content) == "!patron" or str.lower(message_content) == "!add":
-                        print("command activated: patron")
+                        print(f"command activated: patron       {time.strftime('%H:%M', time.localtime())}")
                         asyncio.run(add_patron(msg))
 
                     elif str.lower(message_content) == "!test":
@@ -132,7 +131,7 @@ if __name__ == "__main__":
                     # if command is invalid
 
                     else:
-                        print(f'Unknown command "{message_content}".')
+                        print(f'Unknown command "{message_content}" {time.strftime("%H:%M", time.localtime())}')
                         valid_command_count -= 1
                         msg.send_sms(error_message)
 
