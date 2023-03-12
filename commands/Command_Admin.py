@@ -24,7 +24,7 @@ async def admin_command(msg):
 async def admin_portal(msg):
 
 
-    user_response = await sms.ask("Portal: This command is currently in development. Respond with 1 to access ChatGPT with admin permissions, 2 for counters, or 3 for program control access.", msg, 60, "")
+    user_response = await sms.ask("Portal: This command is currently in development. Respond with 1 to access ChatGPT with admin permissions, 2 for counters, 3 for program control access, or 4 to quit.", msg, 60, "")
 
     # if response = 1, do GPT-3 command (admin)
 
