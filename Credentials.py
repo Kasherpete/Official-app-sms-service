@@ -1,5 +1,4 @@
 
-
 def open_weather_key():
     open_weathermap_key = ""
     return open_weathermap_key
