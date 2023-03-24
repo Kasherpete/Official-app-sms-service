@@ -7,6 +7,7 @@ translate_requests = 0
 command_count = 0
 valid_command_count = 0
 client = Client(twilio_get_number(), twilio_get_sid(), twilio_get_auth())
+day_limit = 15
 
 if __name__ == "__main__":
     import asyncio
@@ -65,7 +66,7 @@ if __name__ == "__main__":
                 else:
                     msg_json.update({msg.number: 1})
 
-                if msg_json[msg.number] < 15 or msg.number in patron_list:
+                if msg_json[msg.number] < day_limit or msg.number in patron_list:
 
                     command_count += 1
                     valid_command_count += 1
@@ -137,7 +138,7 @@ if __name__ == "__main__":
 
 
                 else:
-                    msg.send_sms("You have reached your limit of commands for the day. Sign up on our patreon here to become a Premium Member: patreon.com/Eth0sSMSOfficialPatreon")
+                    msg.send_sms(f"You have reached your limit of commands for the day ({day_limit}). Sign up on our patreon here to become a Premium Member: patreon.com/Eth0sSMSOfficialPatreon")
 
         # how often to check for new messages. I have found this is the most stable, keep on this number if you can.
 
