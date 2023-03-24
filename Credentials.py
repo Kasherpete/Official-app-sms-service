@@ -1,12 +1,11 @@
 
-
 def open_weather_key():
     open_weathermap_key = ""
     return open_weathermap_key
 
 
 def admin_password():
-    password = "Eth0s2023!"
+    password = ""
     return password
 
 
@@ -32,4 +31,4 @@ def weatherapi_key():
 
 
 def patreon_password():
-    return "patron1234"
+    return ""
