@@ -66,8 +66,7 @@ command shouldn't be necessary.
 # Known Limitations
 ### Current limitations
 There are some current limitations, including the ability to handle multiple users at once (Documented
-[Here](https://github.com/Kasherpete/Official-app-sms-service/issues/2)). Hopefully there will be a fix for it in the
-near future
+[Here](https://github.com/Kasherpete/Official-app-sms-service/issues/2)). A fix is in development, and almost done with testing.
 ### Previous limitations
 **_Below version 1.7 beta 1_**, There were a few "bugs" that were present, mainly due to PyTextNow version 1.1.9 that
 make it not possible to send certain characters. This includes quotation marks and the reverse backslash (so you cannot
