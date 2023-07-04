@@ -1,12 +1,37 @@
 # Overview
-This is a project by the Eth0s group to enable certain features over sms available.
+This is a project by the Eth0s group to replace common phone features over sms.
 
 This service runs off of twilio. You will need an active phone number and your SID/auth token.
 The sms service we used to use was PyTextNow, which runs off of TextNow. To get the sid, csrf, and username found in
 credentials.py, ONLY FOR OLDER VERSIONS refer to [this link](https://github.com/leogomezz4t/PyTextNow_API). The newest
 version uses a different python package (developed by me) that can be found
 [here](https://github.com/Kasherpete/twilio-helper).
- 
+# Features
+Currently there are 12 commands available:
+### Admin
+This command is customizable by the hoster, no current built-in functionality
+### Details
+Displays the creators of the program and gives additional information
+### Dictionary
+Allows the user to get information about a word (definition, synonyms, ect.)
+### GPT 
+Allows the user to send questions to GPT-3.5 via the OpenAi API
+### Help
+Tells the user all available commands. Is also able to give information about specific commands
+### Patron
+Allows the user to enter Premiun Member mode by entering a code obtained from becoming a supporter on patreon. (WIP)
+### QR
+gives the user information about a QR code
+### Secret
+Its a secret :)
+### Status
+Gives a report on the status of various apis used for services
+### Translate
+allows the user to translate text into different languages
+### Weather
+Gives the user weather data for an inputed location
+### Bulletin
+Gives the user updates on the service
 # Setup
 ### Account Setup:
 You will need the following accounts and keys:  
@@ -60,8 +85,8 @@ developed by myself and make everything easier for newcomers to Python.
 Just run the program (Main.py) in your program editor, or in your terminal.
 
 # Admin Command
-You will find a command file named Command_Admin.py. This file is for use at your disposal for any of your needs,
-although we may add some functionality to this command that gets uploaded to GitHub. For most use cases, changing this
+You will find a command file named Command_Admin.py. This file is customizable by you,
+although we may add some built in functionality to this command in the future. For most use cases, changing this
 command shouldn't be necessary.
 # Known Limitations
 ### Current limitations
